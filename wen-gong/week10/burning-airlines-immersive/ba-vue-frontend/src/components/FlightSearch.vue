@@ -3,7 +3,7 @@
       <h2>Search for Flights</h2>
     
       <label>Origin:
-        <select v-model="origin" v-on:change="validate">
+        <select class="origin" v-model="origin" v-on:change="validate">
           <option value="">Please select:</option>
           <option value="SYD">Sydney</option>
           <option value="MEL">Melbourne</option>
@@ -13,9 +13,9 @@
       </label>
     
       <label>Destination:
-        <select v-model="destination" @change="validate">
+        <select class="destination" v-model="destination" @change="validate">
           <option value="">Please select:</option>
-          <option value="SYD">Sydney</option>
+          <option value="SYD">Sydney2</option>
           <option value="MEL">Melbourne</option>
           <option value="SIN">Singapore</option>
           <option value="SFO">San Francisco</option>
@@ -46,7 +46,7 @@
       }, // data()
       methods: {
         submitSearch(){    // shorthand for submitSearch: function(){} 
-          console.log('Search button clicked!', this.origin, this.destination);
+          // console.log('Search button clicked!', this.origin, this.destination);
           // React version: this.props.history.push(`/flights/search/${this.state.origin}/...`)
           if( this.origin === '' || this.destination === '' ){
             // console.log('Please select origina and destination!');
@@ -54,9 +54,11 @@
             // value of a piece of state using '=' and Vue magically notices it
             // and triggers a re-render automatically
             this.formErrorMessage = 'Please select an origin and a destination.';
+            console.log('validation error');
             
             return; // early return to prevent the push() below from happening
           } 
+          // console.log('router', this.$router);
           this.$router.push({
             name: 'SearchResults', // in router/index.js
             params: {
@@ -65,6 +67,7 @@
               destination: this.destination
             }
           });
+     
         }, // submitSearch()
         validate(){
           // Make the error message disappear when both origin and destination are selected

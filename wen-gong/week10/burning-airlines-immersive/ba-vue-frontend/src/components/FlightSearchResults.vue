@@ -66,9 +66,7 @@
           this.loading = false;
         }
       }, // mounted()
-
       methods: {
-        
         selectFlight( id ){
           // Formerly used like this:
           //   <div @click="selectFlight( flight.id )"
@@ -88,6 +86,8 @@
       .results div {
         cursor: pointer;
         text-decoration: none;
+        width: 30vw;
+        margin: 0 auto;
       }
       .results a {
         text-decoration: none;
